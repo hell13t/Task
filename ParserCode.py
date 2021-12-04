@@ -1,4 +1,3 @@
-import unidecode
 import random
 import requests
 from bs4 import BeautifulSoup as BS
@@ -30,7 +29,6 @@ nameStr = ''.join(name[a])
 dataStr = ','.join(resultData[a])
 dataStr = dataStr.replace(',,', ',')
 dataStr = dataStr.replace(',', '               ')
-#dataStr = unidecode.unidecode(dataStr)
 result = nameStr + '               ' + dataStr
 
 Place = str(result)
