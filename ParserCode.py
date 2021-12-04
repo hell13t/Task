@@ -1,19 +1,16 @@
-from prettytable import PrettyTable
 import unidecode
 import random
 import requests
 from bs4 import BeautifulSoup as BS
 
 a = random.randint(0,40)
-x = PrettyTable()
-Place = []
+Place = ""
 name = []
 data = []
 
 r = requests.get('https://news.google.com/covid19/map?hl=ru&gl=RU&ceid=RU%3Aru')
 html = BS(r.content, 'lxml')
 
-x.add_column("     Местоположения     |     Все случаи заболевания     |     Новые случаи за 1дн.     |     Кол-во на млн ч.     |     Умерло     ",[Place])
 
 tableCountries = html.find('tbody', class_ = 'ppcUXd').find_all('th') #Названия стран
 tableData = html.find('tbody', class_ = 'ppcUXd').find_all('td') #Данные
@@ -33,9 +30,9 @@ nameStr = ''.join(name[a])
 dataStr = ','.join(resultData[a])
 dataStr = dataStr.replace(',,', ',')
 dataStr = dataStr.replace(',', '               ')
-dataStr = unidecode.unidecode(dataStr)
+#dataStr = unidecode.unidecode(dataStr)
 result = nameStr + '               ' + dataStr
 
-Place.append(result)
+Place = str(result)
 
-print(x)
+print("Местоположения | Все случаи заболевания | Новые случаи за 1дн. | Кол-во на млн ч. | Умерло" + "\n" + Place)
