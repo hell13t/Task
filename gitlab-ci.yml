@@ -5,5 +5,5 @@ services:
 docker-job:
     stage: docker
     image: docker:parser
-    scripts:
+    script:
         - docker build .
