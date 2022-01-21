@@ -1,9 +1,0 @@
-stages:
-    - docker
-services:
-    - docker:parser
-docker-job:
-    stage: docker
-    image: docker:parser
-    script:
-        - docker build .
