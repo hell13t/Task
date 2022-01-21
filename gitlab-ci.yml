@@ -1,0 +1,13 @@
+image: docker:19.03.13
+
+variables:
+  IMAGE_NAME: "task"
+services:
+  - docker:19.03.13-dind
+
+build image:
+  script:
+    - docker build -t hell13t/$IMAGE_NAME .
+    - docker login -u hell13t -p $DOCKER_HUB_TOKEN
+    - docker push hell13t/$IMAGE_NAME
+  
